@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 import oauth2_provider.contrib.rest_framework
@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-orgs!vc!52%3@x6i9e$b2n=3j5+-3k!(o$dr!ktlv2avdx3!r_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.1.2"]
 
 
 # Application definition
@@ -136,7 +136,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'app.User'
 
-MEDIA_ROOT = f'{BASE_DIR}/media/'
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 CLIENT_ID = "sWAvXj7BkLdoxUjD1g4gUUsQCupd9Ts4CCxe6vNk"
 CLIENT_SECRET = "FCYobelmzcqOErqpxD4eygOvS8VfakQjgf7yX7tM7WV4iesf0icjPyJadaVftUNYEMPmEy3Dwa7hrkSBDl4GXyZ3ymp5benUR3QwJ9IUTiUtNO5kagPBMcGxVT7XEblJ"

@@ -13,10 +13,27 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'avatar')
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = (
+            'id',
+            'username',
+            'password',
+            'avatar',
+            'maximum_capacity',
+            'used_capacity',
+            'expiration_date'
+        )
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
+
 
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
-        fields = '__all__'
+        fields = ('id','name', 'type', 'link', 'size', 'created_date', 'owner')
+        read_only_fields = ('id',)
+
+class FileShareSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FileShare
+        fields = ('file', 'user', 'shared_date')
